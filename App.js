@@ -1,22 +1,18 @@
-// const heading = React.createElement(
-//   "h1",
-//   { id: "heading",
-//     abc:"aryan"
-//    },
-//   "Namaste React from Aryan"
-// );
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement(
-    "div",
-    { id: "child" },
-    [React.createElement("h1", {}, "I am H1 tag"), React.createElement("h2", {}, "I am H2 tag")]  //Child--(siblings--(on the same level))
-  )    //Child
+const heading = React.createElement(
+  "h1",
+  { id: "heading",
+   },
+  "Namaste React from Aryan"
 );
 
-console.log(parent) // Object--React object----Not an HTML Element
+// JSX-  Transpiled(coverted to JS code that JS engine of browsers can understand) by parcel(Babel is used by parcel to do this transpilation) before it reaches the JS engine of browsers
+//JSX =>(coverted to(by babel)---) React.createElement("h1", { id: "heading" }, "H1 from JSX") ==> HTML Element
+const jsxHeading= <h1 id="headind" className="class" tabIndex="1">H1 from JSX</h1>
+console.log(heading) // Object--React object----Not an HTML Element
+console.log(jsxHeading)
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(heading);
-root.render(parent); //Object--React object -"parent" ---converted to html tag by render() method
+root.render(jsxHeading);
