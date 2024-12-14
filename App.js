@@ -1,18 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-const heading = React.createElement(
-  "h1",
-  { id: "heading",
-   },
-  "Namaste React from Aryan"
-);
+const heading = (<h1>Hi Aryan</h1>);
 
-// JSX-  Transpiled(coverted to JS code that JS engine of browsers can understand) by parcel(Babel is used by parcel to do this transpilation) before it reaches the JS engine of browsers
-//JSX =>(coverted to(by babel)---) React.createElement("h1", { id: "heading" }, "H1 from JSX") ==> HTML Element
-const jsxHeading= <h1 id="headind" className="class" tabIndex="1">H1 from JSX</h1>
-console.log(heading) // Object--React object----Not an HTML Element
-console.log(jsxHeading)
+//rendering React element inside another React
+const elem = (<div>
+  {heading}
+  <h1>Hi Aryan</h1>
+  </div>);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(heading);
-root.render(jsxHeading);
+//React Functional Component----
+const ReactComponent = () => {
+  return (<h1 className="head"> React Functional Component</h1>);
+}
+
+//Rendering one compoent inside another ---Component composition
+const Main = () => {
+  return ( <div className='container'>
+  <h1 className="mainhead"> Main Component</h1>
+  < ReactComponent/>
+  </div>);
+}
+
+//Alternate syntax for creating react components
+const MainAlternate = function(){
+  return ( <div className='container'>
+  <h1 className="mainhead"> Main Component</h1>
+  < ReactComponent/>
+  </div>);
+}
+
+//writing JS inside JSX
+const name ='Aryan';
+const MainJSX = () => (<div className='container'>
+  <h1 className="mainhead"> Main Component</h1>
+  <h2>{name}</h2>
+  < ReactComponent/>
+  </div>)
+
+  //rendering React component inside React element
+const elem2 = (<div>
+  {<MainJSX/>}
+  <h1>Hi Aryan</h1>
+  </div>);
+
+  //alternate way to render React Component
+  const elem3 = (<div>
+    {MainJSX()}
+    <h1>Hi Aryan</h1>
+    </div>);
+
+  //rendering react elemt inside React component
+  const MainJSX2 = () => (<div className='container'>
+    <h1 className="mainhead"> Main Component</h1>
+    <h2>{elem3}</h2>
+    < ReactComponent/>
+    </div>)
+
+//Rendering React component--
+root.render(<MainJSX2 />);
