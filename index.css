@@ -1,42 +1,80 @@
 #heading {
     color: #0000ff;
 }
+
 .header {
     display: flex;
     justify-content: space-between;
     border: 1px solid;
 }
+
 .logo {
     width: 145px;
 }
-.nav-menu > ul{
+
+.nav-menu {
     display: flex;
-    padding-right: 20px;
-    list-style-type: none;
-    align-self: center;
-    >li {
+    >ul {
+        display: flex;
+        padding-right: 20px;
+        list-style-type: none;
+        align-self: center;
+
+        >li {
+            padding: 10px;
+            font-size: 20px;
+        }
+    }
+
+    .login-btn {
         padding: 10px;
-        font-size: 20px;
+        align-self: center;
     }
 }
+
 .search {
     padding: 10px;
 }
-.res-container {
+
+.res-container,
+.shimmer-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
+
+.cuisines {
+    /* width:350px/; */
+    /* word-break: break-all; */
+}
+
 .res-card {
-    width: 300px;
+    width: 200px;
     padding: 5px;
-    margin: 5px  ;
+    margin: 5px;
+
     /* height: 300px; */
     /* border: 1px solid; */
     &:hover {
         box-shadow: 10px 10px #bdbde6;
         cursor: pointer;
     }
+}
+
+.shimmer-card {
+    width: 400px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #f0f0f0;
+
+    /* height: 300px; */
+    /* border: 1px solid; */
+    &:hover {
+        box-shadow: 10px 10px #bdbde6;
+        cursor: pointer;
+    }
+
+    height: 800px;
 }
 
 .res-logo {
