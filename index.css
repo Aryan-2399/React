@@ -7,6 +7,10 @@
     justify-content: space-between;
     border: 1px solid;
 }
+.user-card{
+    padding: 5px;
+    border: 1px solid;
+}
 
 .logo {
     width: 145px;
