@@ -31,6 +31,9 @@
         align-self: center;
     }
 }
+.top-rated {
+    margin-left: 20px;
+}
 
 .search {
     padding: 10px;
