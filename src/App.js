@@ -1,8 +1,8 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header";
 import { Body } from "./components/Body";
-import About from "./components/About";
+// import About from "./components/About";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
@@ -10,6 +10,8 @@ import ResMenu from "./components/ResMenu";
 
 const heading = <h1>Hi Aryan</h1>;
 
+const About = lazy(() => import("./components/About"));
+const Grocery = lazy(() => import("./components/Grocery"));
 //rendering React element inside another React
 const elem = (
   <div>
@@ -18,7 +20,6 @@ const elem = (
   </div>
 );
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 
 const AppLayout = () => {
   return (
@@ -36,23 +37,47 @@ const routerList = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Body />
+        element: <Body />,
       },
       {
         path: "about",
-        element: <About />
+        element: (
+          <Suspense
+            fallback={
+              (<div>
+                <h2>Loading......</h2>
+              </div>)
+            }
+          >
+            <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: "grocery",
+        element: (
+          <Suspense
+            fallback={
+              (<div>
+                <h2>Loading......</h2>
+              </div>)
+            }
+          >
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "restaurant/:resId",
-        element: <ResMenu />
+        element: <ResMenu />,
       },
       {
         path: "contact",
-        element: <Contact />
-      }
+        element: <Contact />,
+      },
     ],
-    errorElement: <Error />
-  }
-])
+    errorElement: <Error />,
+  },
+]);
 
 root.render(<RouterProvider router={routerList} />);
