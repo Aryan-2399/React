@@ -3,6 +3,7 @@ import { RESTAURANT } from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 export const Body = () => {
@@ -21,6 +22,10 @@ export const Body = () => {
     setListOfRes(res.data.cards[4]['card'].card.gridElements.infoWithStyle.restaurants);
     setFilterRes(res.data.cards[4]['card'].card.gridElements.infoWithStyle.restaurants);
   }
+
+  const online = useOnlineStatus();
+  if(online == false)
+    return (<h1>Looks like you're offline, Please check your Internet connection</h1>);
   if(listOfRes.length === 0) {
     return(<Shimmer/>)
   }
